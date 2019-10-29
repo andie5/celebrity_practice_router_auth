@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import juliaRoberts from "./julia-roberts.jpeg";
 import tomCruise from "./tom-cruise.jpeg";
 import bradPitt from "./brad-pitt.jpeg";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import { auth } from "./firebase";
+import Home from "./Home";
 
 //Function but also stateless component?
 function Actor(props) {
@@ -27,16 +28,23 @@ function Product(props) {
 }
 
 class App extends Component {
+  state = {
+    user: null
+  };
+
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      this.setState({ user });
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>Welcome to the Celebrity App</h1>
-        <Link to="/juliaRoberts">Julia Roberts</Link>
-        <Link to="/tomCruise">Tom Cruise</Link>
-        <Link to="/bradPitt">Brad Pitt</Link>
+        <Home user={this.state.user} />
 
         <Switch>
-          <Route exact path="/" render={() => <div>Your on Home Page!</div>} />
+          <Route exact path="/" render={() => <div>Hello</div>} />
           <Route
             exact
             path="/products"
