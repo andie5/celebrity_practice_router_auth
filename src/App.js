@@ -24,7 +24,7 @@ function Page404() {
 }
 
 function Product(props) {
-  return <div>Product: {props.match.params.iddddd}</div>;
+  return <div>Product: {props.match.params.id}</div>;
 }
 
 class App extends Component {
@@ -50,7 +50,7 @@ class App extends Component {
             path="/products"
             render={() => <div>Welcome to Products section!</div>}
           />
-          <Route path="/products/:iddddd" component={Product} />
+          <Route path="/products/:id" component={Product} />
           <Route
             path="/juliaRoberts"
             render={() => (

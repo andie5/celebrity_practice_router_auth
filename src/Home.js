@@ -19,8 +19,11 @@ const Home = ({ user }) => {
         {user ? (
           <>
             <button onClick={logout}>Logout {user.email}</button>
+            <br />
             <Link to="/juliaRoberts">Julia Roberts</Link>
+            <br />
             <Link to="/tomCruise">Tom Cruise</Link>
+            <br />
             <Link to="/bradPitt">Brad Pitt</Link>
           </>
         ) : (
